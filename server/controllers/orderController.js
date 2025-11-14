@@ -51,29 +51,26 @@ export const newOrder = async (req, res, next) => {
 
 // Получить заказ по ID
 export const getSingleOrder = async (req, res, next) => {
-	const order = await Order.findById(req.params.id).populate(
-		"user",
-		"name email"
-	)
-
-	if (!order) {
-		return next(new ErrorHandler("Заказ не найден", 404))
+	try {
+		const order = await Order.findById(req.params.id)
+		if (!order)
+			return res
+				.status(404)
+				.json({ success: false, message: "Заказ не найден" })
+		res.status(200).json({ success: true, order })
+	} catch (error) {
+		res.status(500).json({ success: false, message: error.message })
 	}
-
-	res.status(200).json({
-		success: true,
-		order,
-	})
 }
 
 // Получить все заказы пользователя
-export const myOrders = async (req, res, next) => {
-	const orders = await Order.find({ user: req.user.id })
-
-	res.status(200).json({
-		success: true,
-		orders,
-	})
+export const getMyOrders = async (req, res) => {
+	try {
+		const orders = await Order.find({ user: req.user.id })
+		res.status(200).json({ success: true, orders })
+	} catch (error) {
+		res.status(500).json({ success: false, message: error.message })
+	}
 }
 
 // Получить все заказы (админ)

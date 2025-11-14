@@ -65,7 +65,6 @@ const Navbar = () => {
 					)}
 				</button>
 
-				{/* Иконка пользователя с выпадающим меню */}
 				{userData ? (
 					<div className='w-8 h-8 flex justify-center items-center rounded-full bg-black text-white relative group cursor-pointer'>
 						{userData.name[0].toUpperCase()}
@@ -78,6 +77,11 @@ const Navbar = () => {
 										Подтвердить
 									</li>
 								)}
+								<li
+									onClick={() => navigate("/order")}
+									className='py-1 px-2 hover:bg-gray-200 cursor-pointer border-b pb-1'>
+									Заказы
+								</li>
 								<li
 									onClick={logout}
 									className='py-1 px-2 hover:bg-gray-200 cursor-pointer rounded-b-lg pr-10'>

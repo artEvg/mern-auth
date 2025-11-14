@@ -7,6 +7,7 @@ import ResetPassword from "./pages/ResetPassword"
 import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout"
 import { ToastContainer, Slide } from "react-toastify"
+import Orders from "./pages/Orders.jsx"
 import OrderTracking from "./components/OrderTracking.jsx"
 import "react-toastify/dist/ReactToastify.css"
 
@@ -50,6 +51,10 @@ const App = () => {
 				<Route
 					path='/reset-password'
 					element={<ResetPassword />}
+				/>
+				<Route
+					path='/order'
+					element={<Orders />}
 				/>
 				<Route
 					path='/order/:id'

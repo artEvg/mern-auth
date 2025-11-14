@@ -2,7 +2,7 @@ import express from "express"
 import {
 	newOrder,
 	getSingleOrder,
-	myOrders,
+	getMyOrders,
 	getAllOrders,
 	updateOrder,
 	deleteOrder,
@@ -12,8 +12,8 @@ import { isAuthenticatedUser, authorizeRoles } from "../middleware/auth.js"
 const router = express.Router()
 
 router.post("/new", isAuthenticatedUser, newOrder)
+router.get("/me", isAuthenticatedUser, getMyOrders)
 router.get("/:id", isAuthenticatedUser, getSingleOrder)
-router.get("/me", isAuthenticatedUser, myOrders)
 
 router.get(
 	"/admin/orders",

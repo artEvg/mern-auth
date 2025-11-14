@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 import Navbar from "../components/Navbar"
+import Slider from "../components/Slider"
 import "./Home.css"
 
 const Home = () => {
@@ -14,6 +15,13 @@ const Home = () => {
 
 	useEffect(() => {
 		fetchProducts()
+	}, [])
+
+	useEffect(() => {
+		axios
+			.get("http://localhost:4000/api/products")
+			.then(res => setProducts(res.data.products))
+			.catch(err => console.error(err))
 	}, [])
 
 	const fetchProducts = async () => {
@@ -83,6 +91,10 @@ const Home = () => {
 			<Navbar />
 			<div className='home-container'>
 				<h1>Магазин</h1>
+
+				<div>
+					<Slider products={products} />
+				</div>
 
 				<div className='filters'>
 					<div className='filter-section'>

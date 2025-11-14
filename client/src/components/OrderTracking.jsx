@@ -72,7 +72,7 @@ const OrderTracking = () => {
 				{/* Кнопка перехода на главную */}
 				<button
 					className='back-home-btn'
-					onClick={() => navigate("/")}
+					onClick={() => navigate("/order")}
 					style={{
 						marginTop: "30px",
 						padding: "10px 20px",
@@ -84,8 +84,9 @@ const OrderTracking = () => {
 						borderRadius: "6px",
 						display: "block",
 						width: "max-content",
+						alignItems: "center",
 					}}>
-					На главную
+					Заказы
 				</button>
 			</div>
 		</>
